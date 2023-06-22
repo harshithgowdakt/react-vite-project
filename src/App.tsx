@@ -16,6 +16,11 @@ function App() {
     ],
   });
 
+  const [bugs, setBugs] = useState([
+    { id: 1, title: "Bug 1", fixed: false },
+    { id: 2, title: "Bug 2", fixed: false },
+  ]);
+
   const handleClick = () => {
     setGame({ ...game, player: { ...game.player, name: "gowda" } });
     setPizza({ ...pizza, toppings: [...pizza.toppings, "cheese"] });
@@ -25,6 +30,7 @@ function App() {
         item.id === 1 ? { ...item, quatity: item.quatity + 1 } : item
       ),
     });
+    setBugs(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
   };
 }
 
