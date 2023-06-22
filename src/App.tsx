@@ -24,9 +24,19 @@ function App() {
 
   const [tags, setTags] = useState(["happy", "cheerful"]);
 
+  const [customer, setCustomer] = useState({
+    name: "harshith",
+    address: {
+      city: "Bangalore",
+      zipCode: 94111,
+    },
+  });
+
   const handleClick = () => {
     setGame({ ...game, player: { ...game.player, name: "gowda" } });
+
     setPizza({ ...pizza, toppings: [...pizza.toppings, "cheese"] });
+    
     setCart({
       ...cart,
       items: cart.items.map((item) =>
@@ -41,9 +51,15 @@ function App() {
         if (bug) bug.fixed = true;
       })
     );
+
     setTags([...tags, "exciting"]);
     setTags(tags.filter((tag) => tag !== "happy"));
     setTags(tags.map((tag) => (tag === "happy" ? "happiness" : tag)));
+
+    setCustomer({
+      ...customer,
+      address: { ...customer.address, zipCode: 94112 },
+    });
   };
   return (
     <div>
