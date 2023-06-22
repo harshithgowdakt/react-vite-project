@@ -1,9 +1,11 @@
-import "./App.css";
-import Like from "./components/Like";
+import { useState } from "react";
 
 function App() {
-  const cities = ["banglore", "mumbai", "chennai"];
-  return <Like onClick={() => console.log("clicked")}></Like>;
+  const [game, setGame] = useState({ id: 1, player: { name: "harshith" } });
+
+  const handleClick = () => {
+    setGame({ ...game, player: { ...game.player, name: "gowda" } });
+  };
 }
 
 export default App;
