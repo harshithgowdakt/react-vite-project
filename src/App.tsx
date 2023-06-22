@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { produce } from "immer";
 
 function App() {
   const [game, setGame] = useState({ id: 1, player: { name: "harshith" } });
@@ -32,12 +33,28 @@ function App() {
         item.id === 1 ? { ...item, quatity: item.quatity + 1 } : item
       ),
     });
-    setBugs(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
 
+    // setBugs(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
+    setBugs(
+      produce((draft) => {
+        const bug = draft.find((bug) => bug.id === 1);
+        if (bug) bug.fixed = true;
+      })
+    );
     setTags([...tags, "exciting"]);
     setTags(tags.filter((tag) => tag !== "happy"));
     setTags(tags.map((tag) => (tag === "happy" ? "happiness" : tag)));
   };
+  return (
+    <div>
+      {bugs.map((bug) => (
+        <p key={bug.id}>
+          {bug.title} {bug.fixed ? "Fixed" : "New"}
+        </p>
+      ))}
+      <button onClick={handleClick}>Click me</button>
+    </div>
+  );
 }
 
 export default App;
