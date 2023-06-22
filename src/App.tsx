@@ -21,6 +21,8 @@ function App() {
     { id: 2, title: "Bug 2", fixed: false },
   ]);
 
+  const [tags, setTags] = useState(["happy", "cheerful"]);
+
   const handleClick = () => {
     setGame({ ...game, player: { ...game.player, name: "gowda" } });
     setPizza({ ...pizza, toppings: [...pizza.toppings, "cheese"] });
@@ -31,6 +33,10 @@ function App() {
       ),
     });
     setBugs(bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : bug)));
+
+    setTags([...tags, "exciting"]);
+    setTags(tags.filter((tag) => tag !== "happy"));
+    setTags(tags.map((tag) => (tag === "happy" ? "happiness" : tag)));
   };
 }
 
