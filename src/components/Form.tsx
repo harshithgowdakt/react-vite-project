@@ -1,6 +1,13 @@
+import { FormEvent } from "react";
+
 const Form = () => {
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    console.log("Subbmited");
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="name" className="form-lable">
           Name
@@ -13,6 +20,7 @@ const Form = () => {
         </label>
         <input type="number" className="form-control" />
       </div>
+      <button className="btn btn-primary">Submit</button>
     </form>
   );
 };
