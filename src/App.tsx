@@ -4,7 +4,7 @@ import ExpenseList from "./expense-tracker/component/ExpenseList";
 import ExpenseFilter from "./expense-tracker/component/ExpenseFilter";
 import ExpenseForm from "./expense-tracker/component/ExpenseForm";
 
-export const categories = ["groceries", "utilities", "entertainment"];
+
 function App() {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [expenses, setExpenses] = useState([
